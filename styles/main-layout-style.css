@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 /*////////////////////////
     Table of Contents
     1. Global Styles
@@ -19,9 +22,255 @@
     padding: 0;
 }
 
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;             /* hide the scroll bar */
+    overflow-y: auto;             /* hide the scroll bar */
+}
+
+/* desired colors by customer */
+:root {
+    --custom-color-purple: #5722CD;
+    --custom-color-blue: #4845E4;
+    --custom-color-pink: #ED4385;
+    --custom-color-light-pink: #EC5B93;
+    --custom-color-black: #0C0C0C;
+    --custom-color-light-purple: #F2F0FF;   /* used for larger text like 'hello' and 'services' */
+    --custom-color-light-grey: #F3F6F9;     /* used for background of various projects          */
+    --custom-color-grey: #7A7A7A;           /* for the service text line                        */
+    --page-content-width: 60%;              /* used for all sections to have consistent width */
+    --mobile-page-padding: 15px;            /* a little padding for mobile pages */
+}
+
+
 /* ------------------------------- 2. Typography ----------------------------------- */
 
 /* ------------------------------- 3. Layout --------------------------------------- */
+nav {
+    /*border: 2px solid red;*/
+    /*margin-bottom: 4px;*/
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    column-gap: 75px;
+    list-style: none;           /* remove bullet */
+    padding-top: 35px;
+    padding-right: 80px;        /* add space to right side */
+    background: rgb(72,69,228);
+    background: linear-gradient(90deg, rgba(72,69,228,1) 28%, rgba(87,34,205,1) 100%);
+}
+
+li a {
+    font-family: "Roboto", sans-serif;
+    font-size: 25px;
+    text-decoration: none;      /* remove underline */
+    color: white;
+    font-weight: lighter;
+}
+
+header {
+    /*background-color: var(--custom-color-blue);*/
+    /*border: 2px solid blue;*/
+    /*margin-bottom: 4px;*/
+    background: rgb(72,69,228);
+    background: linear-gradient(90deg, rgba(72,69,228,1) 28%, rgba(87,34,205,1) 100%);
+    /*position: relative;*/
+}
+
+.headerContainer {
+    font-family: "Merriweather", sans-serif;
+    font-size: 27px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    padding-top: 150px;
+    padding-bottom: 320px;
+    width: var(--page-content-width);   /* apply a width so the text doesn't spread over the entire page width */
+    margin: auto;                       /* maintain a equal margin left/right */
+}
+
+.headerContainer h1 {
+    letter-spacing: 3px;
+    line-height: 1.4;
+    color: white;
+    padding-left: var(--mobile-page-padding);
+    padding-right: var(--mobile-page-padding);
+}
+
+.headerContainer p {
+    font-family: "Roboto", sans-serif;
+    color: white;
+    padding-top: 30px;
+    padding-bottom: 50px;
+    font-size: 34px;
+    font-weight: lighter;
+    word-spacing: 2px;
+}
+
+.btnWorkTogether {
+    padding: 8px;               /* keeps a space when width of screen is reduced */
+    border-radius: 35px;
+    border-width: 0;
+    min-width: 29%;
+    width: auto;
+    height: 65px;
+    margin: auto;
+    background-color: var(--custom-color-pink);
+    color: white;
+    font-size: 18px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    text-transform: uppercase;
+}
+
+.btnWorkTogether:hover {
+    background-color: var(--custom-color-light-pink);
+    color: var(--custom-color-black);
+}
+
+main {
+    /*border: 4px solid green;*/
+    /*margin-bottom: 4px;*/
+}
+
+.sectionIntroduction {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.aboutUsContainer {
+    display: flex;
+    flex-direction: column;
+    row-gap: 37px;
+    justify-content: space-around;
+    text-align: center;
+    width: var(--page-content-width);
+    margin: auto;
+    padding-top: 60px;
+    padding-bottom: 145px;
+}
+
+
+.aboutUsContainer p {
+    color: var(--custom-color-purple);
+    font-size: 49px;
+}
+
+.contactUsContainer {
+    font-family: "Roboto", sans-serif;
+    font-size: 25px;
+}
+
+.contactUsContainer a {
+    color: var(--custom-color-purple);
+    text-decoration: none;
+}
+
+.contactUsContainer a:hover {
+    color: var(--custom-color-pink);
+}
+
+.sectionProjects {
+    padding-top: 50px;
+}
+
+.projectsWrapper {      /* wrapper container for all projects, 1 or many */
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    background-color: var(--custom-color-light-grey);
+}
+
+.articleWrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    padding-top: 120px;
+    flex-shrink: 0;
+}
+
+.articleWrapper:nth-child(odd) {
+    flex-direction: row;
+}
+
+.projectsContent {
+    /*border: 3px solid red;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 60px;
+    padding-top: 160px;
+    padding-bottom: 180px;
+    padding-right: 120px;
+    flex-basis: 690px;
+}
+
+.imageWrapper {
+    /*border: 3px solid red;*/
+    flex-basis: 1090px;         /* had to expand the image to get the same size as per sample website page */
+    flex-grow: 0;
+    flex-shrink: 1;
+    padding-left: 70px;
+}
+
+.projectsImage {
+    width: 100%;
+    flex-grow: 0;
+    flex-shrink: 1;
+}
+
+.projectsContentHeader {
+    font-size: 48px;
+}
+
+.projectsContent img {
+    width: 15%;
+}
+
+.projectsContentStory {
+    font-family: "Roboto", sans-serif;
+    font-size: 26px;
+}
+
+.projectsContent a {
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+}
+
+.serviceWrapper {
+    width: 85%;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    margin: auto;
+    row-gap: 50px;
+}
+
+.serviceArticleWrapper {
+    border: 1px solid blue;
+    flex-basis: 500px;
+    height: 500px;
+}
+
+footer {
+    border: 2px solid purple;
+}
 
 /* --------------- 3.1 Reusables ----------------------- */
 
