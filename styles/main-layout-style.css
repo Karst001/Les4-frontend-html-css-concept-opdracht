@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
+
+
 /*////////////////////////
     Table of Contents
     1. Global Styles
@@ -16,6 +18,7 @@
 ////////////////////////*/
 
 /* ------------------------------- 1. Global Styles -------------------------------- */
+/* css reset */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -25,8 +28,8 @@
 body {
     height: 100vh;
     width: 100vw;
-    overflow-x: hidden;             /* hide the scroll bar */
-    overflow-y: auto;             /* hide the scroll bar */
+    overflow-x: hidden;                     /* hide the scroll bar */
+    overflow-y: auto;                       /* hide the scroll bar */
 }
 
 /* desired colors by customer */
@@ -47,19 +50,14 @@ body {
 /* ------------------------------- 2. Typography ----------------------------------- */
 
 /* ------------------------------- 3. Layout --------------------------------------- */
-nav {
-    /*border: 2px solid red;*/
-    /*margin-bottom: 4px;*/
-}
-
 nav ul {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     column-gap: 75px;
-    list-style: none;           /* remove bullet */
+    list-style: none;                       /* remove bullet */
     padding-top: 35px;
-    padding-right: 80px;        /* add space to right side */
+    padding-right: 80px;                    /* add space to right side */
     background: rgb(72,69,228);
     background: linear-gradient(90deg, rgba(72,69,228,1) 28%, rgba(87,34,205,1) 100%);
 }
@@ -67,18 +65,35 @@ nav ul {
 li a {
     font-family: "Roboto", sans-serif;
     font-size: 25px;
-    text-decoration: none;      /* remove underline */
+    text-decoration: none;                  /* remove underline */
     color: white;
     font-weight: lighter;
 }
 
+li a:hover {
+    font-weight: normal;
+}
+
 header {
-    /*background-color: var(--custom-color-blue);*/
-    /*border: 2px solid blue;*/
-    /*margin-bottom: 4px;*/
     background: rgb(72,69,228);
     background: linear-gradient(90deg, rgba(72,69,228,1) 28%, rgba(87,34,205,1) 100%);
-    /*position: relative;*/
+}
+
+.slantedHeader {
+    background: rgb(72,69,228);
+    background: linear-gradient(90deg, rgba(72,69,228,1) 28%, rgba(87,34,205,1) 100%);
+    position: relative;
+    height: 30px;
+}
+
+.slantedHeader::after {
+    content: "";
+    display: block;
+    border-top: 60px solid transparent;
+    border-left: 100vw solid white;
+    border-bottom: 0 solid transparent;
+    position: absolute;
+    bottom: -1px;
 }
 
 .headerContainer {
@@ -89,9 +104,9 @@ header {
     justify-content: space-around;
     text-align: center;
     padding-top: 150px;
-    padding-bottom: 320px;
-    width: var(--page-content-width);   /* apply a width so the text doesn't spread over the entire page width */
-    margin: auto;                       /* maintain a equal margin left/right */
+    padding-bottom: 200px;
+    width: var(--page-content-width);       /* apply a width so the text doesn't spread over the entire page width */
+    margin: auto;                           /* maintain a equal margin left/right */
 }
 
 .headerContainer h1 {
@@ -112,8 +127,14 @@ header {
     word-spacing: 2px;
 }
 
+header img {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
 .btnWorkTogether {
-    padding: 8px;               /* keeps a space when width of screen is reduced */
+    padding: 8px;
     border-radius: 35px;
     border-width: 0;
     min-width: 29%;
@@ -131,12 +152,6 @@ header {
 
 .btnWorkTogether:hover {
     background-color: var(--custom-color-light-pink);
-    color: var(--custom-color-black);
-}
-
-main {
-    /*border: 4px solid green;*/
-    /*margin-bottom: 4px;*/
 }
 
 .sectionIntroduction {
@@ -163,7 +178,7 @@ main {
 
 .aboutUsContainer p {
     color: var(--custom-color-purple);
-    font-size: 49px;
+    font-size: 50px;
 }
 
 .contactUsContainer {
@@ -181,95 +196,244 @@ main {
 }
 
 .sectionProjects {
-    padding-top: 50px;
-}
-
-.projectsWrapper {      /* wrapper container for all projects, 1 or many */
-    display: flex;
-    flex-direction: column;
-    row-gap: 5px;
     background-color: var(--custom-color-light-grey);
+    margin-top: 50px;
+    padding-bottom: 275px;
 }
 
 .articleWrapper {
+    padding-top: 125px;
     display: flex;
     flex-direction: row-reverse;
-    justify-content: center;
-    padding-top: 120px;
-    flex-shrink: 0;
+    align-items: flex-start;
+    width: 90%;                 /* set the width to be 90% of the 100vw */
+    margin: auto;               /* position center of screen */
 }
 
 .articleWrapper:nth-child(odd) {
     flex-direction: row;
 }
 
-.projectsContent {
-    /*border: 3px solid red;*/
-    display: flex;
+.articleWrapper:nth-child(even) .projectsDetails{
+    margin: auto 0 auto 200px; /* top / right / bottom / left */
+}
+
+.projectsDetails{
+    flex-shrink: 1;
+    min-width: 475px;
+    flex-basis: 510px;
+    margin: auto 200px auto 30px; /* top / right / bottom / left */
+    height: 450px;
+    display: flex;              /* create a flex for the item inside parent container */
     flex-direction: column;
-    justify-content: space-between;
-    padding-left: 60px;
-    padding-top: 160px;
-    padding-bottom: 180px;
-    padding-right: 120px;
-    flex-basis: 690px;
+    justify-content: space-evenly;
 }
 
-.imageWrapper {
-    /*border: 3px solid red;*/
-    flex-basis: 1090px;         /* had to expand the image to get the same size as per sample website page */
-    flex-grow: 0;
-    flex-shrink: 1;
-    padding-left: 70px;
-}
-
-.projectsImage {
-    width: 100%;
-    flex-grow: 0;
-    flex-shrink: 1;
-}
-
-.projectsContentHeader {
-    font-size: 48px;
-}
-
-.projectsContent img {
-    width: 15%;
-}
-
-.projectsContentStory {
+.projectsStory {
     font-family: "Roboto", sans-serif;
     font-size: 26px;
 }
 
-.projectsContent a {
+.projectsDetails a {
     font-family: "Roboto", sans-serif;
     font-size: 20px;
     font-weight: bold;
     text-transform: uppercase;
     text-decoration: none;
     letter-spacing: 0.05em;
+    position: relative;             /* need for pseudo element */
+}
+
+.projectsDetails a::after {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 3px;
+    background-color: var(--custom-color-purple);
+    top: 50%;                       /* center vertically */
+    position: absolute;
+
+}
+
+.projectsDetails a:hover::after {
+    content: "";
+    display: inline-block;
+    width: 80px;
+    height: 3px;
+    background-color: var(--custom-color-purple);
+    transition: width .25s ease-in-out;
+}
+
+.projectsDetails img {
+    max-width: 70px;
+}
+
+.container-content {
+    flex-grow: 5;
+    margin-top: auto;       /* keeps container centered within the parent container */
+    margin-bottom: auto;    /* keeps container centered within the parent container */
+}
+
+.projectsHeader {
+    font-family: "Merriweather", sans-serif;
+    font-size: 42px;
+    font-weight: bold;
+}
+
+.projectsImage {
+    width: 100%;
 }
 
 .serviceWrapper {
     width: 85%;
-    padding-top: 80px;
+    padding-top: 125px;
     padding-bottom: 80px;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
     margin: auto;
-    row-gap: 50px;
+    gap: 50px;
 }
 
-.serviceArticleWrapper {
-    border: 1px solid blue;
-    flex-basis: 500px;
-    height: 500px;
+.articleServicesWrapper {
+    border: 0.125em solid var(--custom-color-purple);
+    flex-basis: 490px;
+    height: 450px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1), 0 6px 16px 0 rgba(0,0,0,0.10);
+    text-align: left;
+    padding: 55px;
+}
+
+.serviceImage {
+    width: 28%;         /* scale down size to match sample page */
+}
+
+.articleServicesWrapper figure h3 {
+    font-family: "Merriweather", sans-serif;
+    font-size: 30px;
+    color: var(--custom-color-purple);
+    padding-top: 5px;
+    padding-bottom: 20px;
+}
+
+.articleServicesWrapper figure p {
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    color: var(--custom-color-black);
+    padding-top: 5px;
+}
+
+
+.sectionFormContainer {
+    width: 100%;
+    background: rgb(72,69,228);
+    background: linear-gradient(90deg, rgba(72,69,228,1) 28%, rgba(87,34,205,1) 100%);
+    margin-top: 50px;
+}
+
+.formWrapper {
+    margin-top: 60px;
+    padding-top: 55px;
+}
+
+.formHeader {
+    width: 100%;
+    text-align: center;
+}
+
+.formHeader h1 {
+    font-family: "Merriweather", sans-serif;
+    font-size:61px;
+    padding-top: 85px;
+    color: white;
+}
+
+.formHeader p {
+    font-family: "Roboto", sans-serif;
+    font-size: 26px;
+    font-weight: lighter;
+    padding-top: 30px;
+    padding-bottom: 20px;
+
+    color: white;
+}
+
+.formFooter {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-basis: 450px;
+    align-items: center;
+    width: 100%;
+    column-gap: 50px;
+}
+
+.formFooter label {
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+    width: 56%;
+    padding-top: 22px;
+    padding-bottom: 4px;
+}
+
+.formFooter textarea {
+    font-family: "Roboto", sans-serif;
+    min-height: 300px;
+    min-width: 56%;         /* needed for textarea, otherwise you can make element wider or smaller */
+    max-width: 56%;         /* needed for textarea, otherwise you can make element wider or smaller */
+    border-radius: 6px;
+    border-style: none;
+    padding: 12px;
+    margin-bottom: 15px;
+}
+
+.formFooter button {
+    font-size: 18px;
+    width: 250px;
+    height: 75px;
+    border-radius: 50px;
+    border: none;
+    text-transform: uppercase;
+    background-color: var(--custom-color-pink);
+    color: white;
+    margin-top: 20px;
+    margin-bottom: 100px;
+    cursor: pointer;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.formFooter button:hover {
+    background-color: var(--custom-color-light-pink);
+}
+
+input[type=text], input[type=email], textarea{
+    font-family: "Roboto", sans-serif;
+    font-size: 22px;        /* font size for the text when user enter data */
+    min-width: 56%;         /* needed for textarea, otherwise you can made element wider or smaller */
+    max-width: 56%;         /* needed for textarea, otherwise you can made element wider or smaller */
+    border-radius: 6px;
+    border-style: none;
+    padding: 12px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    height: 75px;
+}
+
+input[type=text], input[type=email], textarea::placeholder {
+    font-size: 20px;
 }
 
 footer {
-    border: 2px solid purple;
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+    background-color: var(--custom-color-black);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 85px;
 }
 
 /* --------------- 3.1 Reusables ----------------------- */
@@ -283,3 +447,166 @@ footer {
 /* --------------- 4.2 Introduction ------------------- */
 
 /* ------------------------------- 5. Media Queries -------------------------------- */
+@media (width <= 576px) {
+    /* only overwrite the properties that need to be changed */
+    li a {
+        font-size: 20px;
+
+    }
+
+    .headerContainer {
+        width: 99%;
+        margin: auto;
+    }
+
+    .headerContainer h1 {
+        font-size: 34px;
+    }
+
+    .headerContainer p {
+        font-size: 30px;
+    }
+
+    .sectionIntroduction {
+        width: 99%;
+        margin: 0;
+        padding-bottom: 50px;
+    }
+
+    .aboutUsContainer {
+        width: 99%;
+    }
+
+    .aboutUsContainer p {
+        font-size: 28px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .sectionProjects {
+        width: 100%;
+        padding-bottom: 130px;
+    }
+
+    .serviceWrapper {
+        width: 80%;
+        padding-top: 125px;
+        padding-bottom: 80px;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        margin: auto;
+        gap: 50px;
+    }
+
+    .articleServicesWrapper p {
+        font-size: 13px;
+    }
+
+    .articleServicesWrapper {
+        border: 0.125em solid var(--custom-color-purple);
+        flex-basis: 490px;
+        height: 450px;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1), 0 6px 16px 0 rgba(0,0,0,0.10);
+        text-align: left;
+        padding: 55px;
+    }
+
+    .serviceImage {
+        width: 28%;         /* scale down size to match sample page */
+    }
+
+    .articleServicesWrapper figure h3 {
+        font-family: "Merriweather", sans-serif;
+        font-size: 28px;
+        color: var(--custom-color-purple);
+        padding-top: 5px;
+        padding-bottom: 20px;
+    }
+
+    .articleServicesWrapper figure p {
+        font-family: "Roboto", sans-serif;
+        font-size: 18px;
+        color: var(--custom-color-black);
+        padding-top: 5px;
+    }
+
+    .formHeader h1 {
+        font-size:45px;
+    }
+
+    .formHeader p {
+        font-size: 24px;
+    }
+
+    .formFooter {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        flex-basis: 100vw;
+        align-items: center;
+        width: 100%;
+        column-gap: 50px;
+    }
+
+    .formFooter label {
+        font-family: "Roboto", sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: white;
+        width: 95%;
+        padding-top: 22px;
+        padding-bottom: 4px;
+    }
+
+    .formFooter textarea {
+        min-height: 300px;
+        min-width: 95%;         /* needed for textarea, otherwise you can make element wider or smaller */
+        max-width: 95%;         /* needed for textarea, otherwise you can make element wider or smaller */
+    }
+
+    input[type=text], input[type=email], textarea{
+        font-size: 20px;        /* font size for the text when user enter data */
+        min-width: 95%;         /* needed for textarea, otherwise you can made element wider or smaller */
+        max-width: 95%;         /* needed for textarea, otherwise you can made element wider or smaller */
+        height: 55px;
+    }
+
+    .formFooter button {
+        font-size: 18px;
+        width: 220px;
+    }
+
+    footer {
+        font-size: 16px;
+    }
+
+    .articleWrapper {
+        padding-top: 30px;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        width: 90%;                 /* set the width to be 90% of the 100vw */
+        margin: auto;               /* position center of screen */
+    }
+
+    .articleWrapper:nth-child(odd) {
+        flex-direction: column-reverse;
+    }
+
+    .articleWrapper:nth-child(even) .projectsDetails{
+        margin: auto;
+    }
+
+    .projectsDetails{
+        flex-basis: 350px;
+    }
+
+    .projectsHeader {
+        font-size: 33px;
+    }
+
+    .projectsStory {
+        font-size: 22px;
+    }
+}
